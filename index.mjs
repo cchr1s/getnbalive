@@ -13,7 +13,7 @@ const port = 8085
 
 const start = async () => {
     const host = 'http://www.didiaokan2018.com'
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
     await page.goto(host);
     await page.screenshot({ path: 'example.png' });
