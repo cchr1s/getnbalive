@@ -87,7 +87,7 @@ const server = http.createServer(async (req, res) => {
                 })
             }
         }
-        content.length > 0 ? res.end(JSON.stringify(content)) : res.end('Sry, No Data!')
+        content.length > 0 ? res.end(JSON.stringify(content)) : res.end('SSry, No Data!')
     }
 })
 
