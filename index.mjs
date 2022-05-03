@@ -12,7 +12,8 @@ rule.minute = 0
 const port = 8085
 
 const start = async () => {
-    const host = 'http://www.didiaokan2018.com'
+    // const host = 'http://www.didiaokan2018.com'
+    const host = 'http://jrszb111.com'
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(host);
@@ -27,7 +28,7 @@ const start = async () => {
         if (matchType === 'NBA') {
             const map = {}
             map.timer = await today[i].$eval('.timer', el => el.innerHTML)
-            map.liveHref = await today[i].$eval('.download a', el => `http://www.didiaokan2018.com${el.getAttribute('href')}`)
+            map.liveHref = await today[i].$eval('.download a', el => `${window.location.protocol}//${window.location.host}${el.getAttribute('href')}`)
             map.team1 = await today[i].$eval('.team > p:nth-child(1)', el => el.innerText)
             map.team2 = await today[i].$eval('.team > p:nth-child(3)', el => el.innerText)
             arr.push(map)
@@ -45,7 +46,7 @@ const job = schedule.scheduleJob(rule, function () {
     start()
 })
 
-// start()
+start()
 const server = http.createServer(async (req, res) => {
     res.setHeader("Content-type", "text/plain;charset=utf-8");
 
