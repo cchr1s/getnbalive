@@ -14,7 +14,7 @@ const port = 8085
 const start = async () => {
     // const host = 'http://www.didiaokan2018.com'
     const host = 'http://jrszb111.com'
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
     await page.goto(host);
     await page.screenshot({ path: 'example.png' });
@@ -88,7 +88,7 @@ const server = http.createServer(async (req, res) => {
                 })
             }
         }
-        content.length > 0 ? res.end(JSON.stringify(content)) : res.end('Sry, No Data!')
+        content.length > 0 ? res.end(JSON.stringify(content)) : res.end('SSry, No Data!')
     }
 })
 
