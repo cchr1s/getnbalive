@@ -46,7 +46,7 @@ const job = schedule.scheduleJob(rule, function () {
     start()
 })
 
-start()
+// start()
 const server = http.createServer(async (req, res) => {
     res.setHeader("Content-type", "text/plain;charset=utf-8");
 
